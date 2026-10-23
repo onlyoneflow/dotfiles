@@ -1,0 +1,69 @@
+[mgr]
+# Finder-like presentation: icons stay visible while the file list remains clean.
+ratio = [0, 3, 2]
+linemode = "size"
+show_hidden = false
+sort_by = "natural"
+sort_dir_first = true
+sort_sensitive = false
+sort_reverse = false
+
+[preview]
+# Show image thumbnails and a readable preview whenever the terminal supports it.
+image_filter = "catmull-rom"
+image_quality = 90
+wrap = "yes"
+
+[opener]
+edit = [
+  { run = 'nvim %s', block = true, desc = "Neovim", for = "unix" },
+]
+play = [
+  { run = 'open -a "QuickTime Player" %s', orphan = true, desc = "QuickTime Player", for = "macos" },
+]
+sysopen = [
+  { run = 'open %s', orphan = true, desc = "Default app", for = "macos" },
+]
+hex = [
+  { run = 'hexyl --color=always %s 2>/dev/null | less -R || xxd %s | less', block = true, desc = "Hex view", for = "unix" },
+]
+
+[open]
+prepend_rules = [
+  # Видео и аудио — QuickTime
+  { mime = "video/*", use = "play" },
+  { mime = "audio/*", use = "play" },
+  { mime = "{audio,video}/*", use = "play" },
+  # Фото — QuickTime (в меню выбора есть и Default app)
+  { mime = "image/*", use = [ "play", "sysopen" ] },
+
+  # PDF — приложением по умолчанию (Preview)
+  { mime = "application/pdf", use = "sysopen" },
+
+  # Офисные доки — приложением по умолчанию (Word/Excel/PowerPoint/Keynote/Numbers/Pages)
+  { mime = "application/msword", use = "sysopen" },
+  { mime = "application/vnd.*", use = "sysopen" },
+  { mime = "application/rtf", use = "sysopen" },
+  { mime = "application/epub+zip", use = "sysopen" },
+  { url = "*.{pdf,doc,docx,dotx,xls,xlsx,xlsm,ppt,pptx,pps,ppsx,key,numbers,pages,odt,ods,odp,odg,rtf,epub,mobi,azw,azw3}", use = "sysopen" },
+  # Шрифты — Font Book, dmg/pkg — системой
+  { mime = "font/*", use = "sysopen" },
+  { mime = "application/ms-opentype", use = "sysopen" },
+  { url = "*.{dmg,pkg}", use = "sysopen" },
+
+  # Реально нечитаемое (бинарники) — красивый hex в терминале
+  { mime = "application/octet-stream", use = "hex" },
+  { mime = "application/x-*", use = "hex" },
+
+  # Текст, код, конфиги — nvim
+  { mime = "text/*", use = "edit" },
+  { mime = "inode/empty", use = "edit" },
+  { mime = "application/{json,ndjson,javascript,typescript,x-sh,xml}", use = "edit" },
+  { url = "*.{json,jsonc,json5,js,jsx,ts,tsx,mjs,cjs,py,rb,go,rs,c,h,cpp,hpp,java,kt,swift,lua,sh,bash,zsh,fish,toml,yaml,yml,xml,html,htm,css,scss,sql,md,markdown,txt,log,conf,cfg,ini,env,dockerfile,makefile,gitignore,vim,nix}", use = "edit" },
+]
+
+# Всё остальное, что не подошло под правила выше — в nvim.
+# Перебивает дефолтный фолбэк yazi (open → TextEdit).
+append_rules = [
+  { url = "*", use = [ "edit", "hex", "sysopen" ] },
+]

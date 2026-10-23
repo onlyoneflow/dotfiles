@@ -1,0 +1,68 @@
+[app]
+overall = { fg = "#f1f5f9", bg = "#0f111a" }
+
+[mgr]
+cwd = { fg = "#c4b5fd", bold = true }
+hovered = { fg = "#c0caf5", bg = "#24283b", bold = true }
+preview_hovered = { fg = "#c0caf5", bg = "#24283b", bold = true }
+find_keyword = { fg = "#11131d", bg = "#facc15", bold = true }
+find_position = { fg = "#c0caf5", bg = "#24283b", bold = true }
+marker_copied = { fg = "#73daca", bg = "#73daca" }
+marker_cut = { fg = "#f7768e", bg = "#f7768e" }
+marker_marked = { fg = "#7dcfff", bg = "#7dcfff" }
+marker_selected = { fg = "#38bdf8", bg = "#38bdf8" }
+count_copied = { fg = "#1f2335", bg = "#73daca" }
+count_cut = { fg = "#1f2335", bg = "#f7768e" }
+count_selected = { fg = "#c0caf5", bg = "#24283b", bold = true }
+border_symbol = "│"
+border_style = { fg = "#475569" }
+
+[tabs]
+active = { fg = "#c0caf5", bg = "#24283b", bold = true }
+inactive = { fg = "#cbd5e1", bg = "#1e293b" }
+
+[mode]
+normal_main = { fg = "#c0caf5", bg = "#24283b", bold = true }
+normal_alt = { fg = "#7aa2f7", bg = "#1e293b" }
+select_main = { fg = "#1a1b26", bg = "#9ece6a", bold = true }
+select_alt = { fg = "#86efac", bg = "#1e293b" }
+unset_main = { fg = "#1a1b26", bg = "#f7768e", bold = true }
+unset_alt = { fg = "#fb7185", bg = "#1e293b" }
+
+[indicator]
+parent = { fg = "#c0caf5", bg = "#24283b" }
+current = { fg = "#c0caf5", bg = "#24283b", bold = true }
+preview = { fg = "#1a1b26", bg = "#bb9af7" }
+
+[status]
+progress_normal = { fg = "#86efac", bg = "#1e293b" }
+progress_error = { fg = "#fb7185", bg = "#1e293b" }
+perm_type = { fg = "#bb9af7", bg = "#1e293b" }
+perm_read = { fg = "#e0af68", bg = "#1e293b" }
+perm_write = { fg = "#f7768e", bg = "#1e293b" }
+perm_exec = { fg = "#9ece6a", bg = "#1e293b" }
+perm_sep = { fg = "#565f89", bg = "#1e293b" }
+
+[input]
+border = { fg = "#38bdf8" }
+[pick]
+border = { fg = "#38bdf8" }
+active = { fg = "#c4b5fd", bold = true }
+[confirm]
+border = { fg = "#38bdf8" }
+title = { fg = "#c4b5fd", bold = true }
+[cmp]
+border = { fg = "#38bdf8" }
+[notify]
+title_info = { fg = "#73daca" }
+title_warn = { fg = "#e0af68" }
+title_error = { fg = "#f7768e" }
+
+[filetype]
+rules = [
+  { mime = "**/image/*", fg = "#e0af68" },
+  { mime = "**/{audio,video}/*", fg = "#bb9af7" },
+  { mime = "**/application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#f7768e" },
+  { mime = "**/application/{pdf,doc,rtf}", fg = "#c4b5fd" },
+  { url = "*", is = "orphan", bg = "#f7768e" },
+]

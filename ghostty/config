@@ -1,0 +1,38 @@
+font-family = JetBrainsMonoNL Nerd Font Mono
+font-style = Light
+font-size = 18
+theme = TokyoNight Storm
+background = 050505
+foreground = c7d0e0
+background-opacity = 0.90
+background-blur = false
+window-padding-x = 6
+window-padding-y = 6
+window-width = 227
+window-height = 64
+window-position-x = 50
+window-position-y = 50
+cursor-style = bar
+cursor-style-blink = false
+adjust-cursor-thickness = 7
+cursor-color = 7aa2f7
+cursor-text = 1f2335
+shell-integration-features = no-cursor,ssh-env
+custom-shader = shaders/ghostty/cursor_warp.glsl
+custom-shader-animation = always
+# Use the native macOS tab strip; the custom `tabs` titlebar can stack or
+# compress tabs into the upper-right corner on some Ghostty/macOS versions.
+macos-titlebar-style = native
+window-new-tab-position = end
+window-show-tab-bar = auto
+macos-window-buttons = visible
+macos-option-as-alt = true
+
+# Native macOS tab workflow.
+keybind = cmd+t=new_tab
+
+# Fast editing in the terminal: line kill, word navigation, and word erase.
+keybind = cmd+backspace=text:\x15
+keybind = ctrl+left=esc:b
+keybind = ctrl+right=esc:f
+keybind = ctrl+backspace=text:\x17

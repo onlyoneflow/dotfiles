@@ -1,0 +1,10 @@
+[flavor]
+use = "tokyo-night"
+
+# Nerd Font icons for files and folders (Yazi's built-in devicons set).
+[icon]
+prepend_conds = [
+  { if = "dir", text = "󰉋" },
+  { if = "!(dir | link)", text = "󰈔" },
+  { if = "link", text = "󰌷" },
+]
